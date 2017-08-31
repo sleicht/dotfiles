@@ -6,7 +6,11 @@ module.exports = {
     // Install GNU core utilities (those that come with macOS are outdated)
     // Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
     'coreutils',
+    'docker',
+    'docker-machine',
+    'docker-compose',
     'dos2unix',
+    'fasd',
     // Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
     'findutils',
     'fortune',
@@ -40,34 +44,48 @@ module.exports = {
     'vim --with-override-system-vi',
     'watch',
     // Install wget with IRI support
-    'wget --enable-iri'
+    'wget --enable-iri',
+    'wakatime-cli '
   ],
   cask: [
     //'adium',
     //'amazon-cloud-drive',
     //'atom',
+    'audirvana-plus',
+    'bartender',
+    'beyond-compare',
     // 'box-sync',
+    'cinch',
     //'comicbooklover',
     //'diffmerge',
-    //'dropbox',
-    //'evernote',
+    'dropbox',
+    'evernote',
+    'franz',
+    'gitter',
+    'google-chrome',
     'gpgtools',
-    //'ireadfast',
+    'hocus-focus',
+    'ireadfast',
     'iterm2',
-    'little-snitch',
+    //'little-snitch',
+    'logitech-options',
     'micro-snitch',
     //'macvim',
     'sizeup',
     //'sketchup',
+    'skype',
     'slack',
+    'squeezeplay',
+    'sublime-text',
     'the-unarchiver',
     //'torbrowser',
     //'transmission',
     //'vlc',
+    'virtualbox',
     'xquartz'
   ],
   gem: [
-    'git-up'
+    // 'git-up'
   ],
   npm: [
     'antic',

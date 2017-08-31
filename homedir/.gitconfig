@@ -44,11 +44,11 @@
   autocrlf = input
   # autocrlf = true # for windows to convert to CRLF on checkout and LF on add
   # warn but allow line ending conversion to proceed
-  safecrlf = warn
+  #safecrlf = warn
   # prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
-  #safecrlf = true
-  editor = vim
-  #editor = subl -w
+  safecrlf = true
+  #editor = vim
+  editor = subl -w
 
 [alias]
   # most commonly used
@@ -157,6 +157,8 @@
 
 [difftool]
   prompt = false
+  cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+  path = -ro
 
 [diff]
   tool = vimdiff
@@ -167,6 +169,8 @@
 [mergetool]
   prompt = false
   keepBackup = false
+  cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+  trustExitCode = true
 
 [merge]
   tool = vimdiff
@@ -198,3 +202,9 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+	path = -ro
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+	trustExitCode = true

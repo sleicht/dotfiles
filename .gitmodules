@@ -7,3 +7,7 @@
 [submodule "homedir/.vim/bundle/Vundle.vim"]
 	path = homedir/.vim/bundle/Vundle.vim
 	url = git://github.com/VundleVim/Vundle.vim.git
+[submodule "hosts"]
+	path = hosts
+	url = https://github.com/StevenBlack/hosts.git
+	branch = master

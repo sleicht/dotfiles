@@ -30,6 +30,7 @@ module.exports = {
     'jq',
     // Mac App Store CLI: https://github.com/mas-cli/mas
     'mas',
+    'mackup',
     // Install some other useful utilities like `sponge`
     'moreutils',
     'nmap',
@@ -57,12 +58,14 @@ module.exports = {
     // 'box-sync',
     'cinch',
     //'comicbooklover',
+    'dash',
     //'diffmerge',
     'dropbox',
     'evernote',
     'franz',
     'gitter',
     'google-chrome',
+    'google-cloud-sdk',
     'gpgtools',
     'hocus-focus',
     'ireadfast',

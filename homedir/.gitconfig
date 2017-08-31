@@ -71,6 +71,7 @@
   who = shortlog -s --
   ph = push
   pl = pull
+  up = pull --rebase --autostash
   lp = log -p
   lod = log --oneline --decorate
   lg = log --graph
@@ -155,25 +156,25 @@
   #Enable the recording of resolved conflicts, so that identical hunks can be resolved automatically later on
   enabled = 1
 
-[difftool]
+[difftool "bc3"]
   prompt = false
   cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
   path = -ro
 
 [diff]
-  tool = vimdiff
+  tool = bc3
 
 [init]
   templatedir = ~/.dotfiles/.git_template
 
-[mergetool]
+[mergetool "bc3"]
   prompt = false
   keepBackup = false
   cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
   trustExitCode = true
 
 [merge]
-  tool = vimdiff
+  tool = bc3
   # Always show a diffstat at the end of a merge
   stat = true
   conflictstyle = diff3

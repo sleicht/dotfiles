@@ -182,6 +182,7 @@ if [[ $? != 0 ]]; then
   require_brew caskroom/cask/brew-cask
 fi
 brew tap caskroom/versions > /dev/null 2>&1
+brew tap buo/cask-upgrade > /dev/null 2>&1
 ok
 
 # skip those GUI clients, git command-line all the way

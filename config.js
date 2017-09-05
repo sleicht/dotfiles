@@ -75,6 +75,7 @@ module.exports = {
     //'little-snitch',
     'logitech-options',
     'micro-snitch',
+    'postman',
     //'macvim',
     'sizeup',
     //'sketchup',

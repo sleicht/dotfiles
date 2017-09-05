@@ -58,6 +58,7 @@ module.exports = {
     'bartender',
     'beyond-compare',
     // 'box-sync',
+    'cheatsheet',
     'cinch',
     //'comicbooklover',
     'dash3',
@@ -88,6 +89,7 @@ module.exports = {
     //'transmission',
     //'vlc',
     'virtualbox',
+    'webstorm',
     'xquartz'
   ],
   gem: [

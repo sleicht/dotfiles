@@ -13,10 +13,11 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time)
 POWERLEVEL9K_NVM_FOREGROUND='000'
 POWERLEVEL9K_NVM_BACKGROUND='072'
 POWERLEVEL9K_SHOW_CHANGESET=true
+#POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %d/%m/%Y}"
 #export ZSH_THEME="random"
 
 # Set to this to use case-sensitive completion
-export CASE_SENSITIVE="true"
+# export CASE_SENSITIVE="true"
 
 # disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
@@ -25,11 +26,11 @@ export CASE_SENSITIVE="true"
 # export DISABLE_LS_COLORS="true"
 
 # disable autosetting terminal title.
-export DISABLE_AUTO_TITLE="true"
+#export DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew colorize compleat cp docker dirpersist autojump git gulp httpie history mvn npm osx per-directory-history sublime tmux tmuxinator web-search)
+plugins=(brew colorize compleat cp docker dirpersist autojump git gulp httpie history mvn npm osx per-directory-history ssh-agent gpg-agent sublime tmux tmuxinator web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,7 +53,7 @@ load-nvmrc
 unsetopt correct
 
 # run fortune on new terminal :)
-fortune
+# fortune
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="${HOME}/.sdkman"

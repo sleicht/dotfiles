@@ -28,6 +28,7 @@ module.exports = {
     'homebrew/dupes/grep',
     // https://github.com/jkbrzt/httpie
     'httpie',
+    'htop',
     // jq is a sort of JSON grep
     'jq',
     // Mac App Store CLI: https://github.com/mas-cli/mas
@@ -40,6 +41,7 @@ module.exports = {
     'reattach-to-user-namespace',
     // better/more recent version of screen
     'homebrew/dupes/screen',
+    'sdkman',
     'tmux',
     'tree',
     'ttyrec',
@@ -52,6 +54,7 @@ module.exports = {
   ],
   cask: [
     //'adium',
+    'alfred',
     //'amazon-cloud-drive',
     //'atom',
     'audirvana-plus2',
@@ -73,8 +76,10 @@ module.exports = {
     'hocus-focus',
     'ireadfast',
     'iterm2',
+    'karabiner-elements',
     //'little-snitch',
     'logitech-options',
+    'logitech-unifying',
     'micro-snitch',
     'postman',
     //'macvim',
@@ -82,6 +87,7 @@ module.exports = {
     //'sketchup',
     'skype',
     'slack',
+    'slate',
     'squeezeplay',
     'sublime-text',
     'the-unarchiver',

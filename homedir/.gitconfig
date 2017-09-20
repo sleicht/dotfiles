@@ -192,7 +192,7 @@
 
 [push]
   default = matching
-	followTags = true
+  followTags = true
 
 [filter "media"]
   required = true
@@ -204,8 +204,8 @@
   smudge = git-lfs smudge %f
   required = true
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
-	path = -ro
+  cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+  path = -ro
 [mergetool "sourcetree"]
-	cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
-	trustExitCode = true
+  cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+  trustExitCode = true

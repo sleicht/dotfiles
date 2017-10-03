@@ -30,7 +30,7 @@ POWERLEVEL9K_SHOW_CHANGESET=true
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew colorize compleat cp docker dirpersist autojump git gulp httpie history mvn npm osx per-directory-history ssh-agent gpg-agent sublime tmux tmuxinator web-search)
+plugins=(brew colorize compleat cp docker dirpersist autojump git gulp httpie history mvn npm osx per-directory-history ssh-agent gpg-agent sublime tmux tmuxinator web-search zsh-wakatime)
 
 source $ZSH/oh-my-zsh.sh
 

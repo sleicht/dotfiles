@@ -24,7 +24,7 @@ POWERLEVEL9K_SHOW_CHANGESET=true
 
 # disable colors in ls
 # export DISABLE_LS_COLORS="true"
-
+export LANG="en_US.UTF-8"
 # disable autosetting terminal title.
 #export DISABLE_AUTO_TITLE="true"
 

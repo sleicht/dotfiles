@@ -29,4 +29,4 @@ export JAVA_HOME=~/.sdkman/candidates/java/current/
 export FONTCONFIG_PATH=/opt/X11/lib/X11/fontconfig
 export NVM_DIR=~/.nvm
 
-export HOMEBREW_GITHUB_API_TOKEN="df25eb8a797c9c5c4b41164b5fa85bc54d9cc0d6"
+export HOMEBREW_GITHUB_API_TOKEN=<HOMEBREW_GITHUB_API_TOKEN>

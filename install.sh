@@ -190,26 +190,26 @@ if [ "$(uname)" == "Darwin" ]; then
   require_brew git
   # need fontconfig to install/build fonts
   require_brew fontconfig
-  # update zsh to latest
-  require_brew zsh
+  # update fish to latest
+  require_brew fish
   # update ruby to latest
   # use versions of packages installed with homebrew
   RUBY_CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl` --with-readline-dir=`brew --prefix readline` --with-libyaml-dir=`brew --prefix libyaml`"
   require_brew ruby
-  # set zsh as the user login shell
+  # set fish as the user login shell
   CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
-  if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" ]]; then
-    bot "setting newer homebrew zsh (/usr/local/bin/zsh) as your shell (password required)"
-    # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
-    # chsh -s /usr/local/bin/zsh
-    sudo dscl . -change /Users/$USER UserShell $SHELL /usr/local/bin/zsh > /dev/null 2>&1
+  if [[ "$CURRENTSHELL" != "/usr/local/bin/fish" ]]; then
+    bot "setting newer homebrew fish (/usr/local/bin/fish) as your shell (password required)"
+    # sudo bash -c 'echo "/usr/local/bin/fish" >> /etc/shells'
+    # chsh -s /usr/local/bin/fish
+    sudo dscl . -change /Users/$USER UserShell $SHELL /usr/local/bin/fish > /dev/null 2>&1
     ok
   fi
 fi
 
-  if [[ ! -d "./oh-my-zsh/custom/themes/powerlevel9k" ]]; then
-    git clone https://github.com/bhilburn/powerlevel9k.git oh-my-zsh/custom/themes/powerlevel9k
-  fi
+  #if [[ ! -d "./oh-my-zsh/custom/themes/powerlevel9k" ]]; then
+  #  git clone https://github.com/bhilburn/powerlevel9k.git oh-my-zsh/custom/themes/powerlevel9k
+  #fi
 
   bot "creating symlinks for project dotfiles..."
   pushd homedir > /dev/null 2>&1
@@ -236,26 +236,29 @@ fi
   popd > /dev/null 2>&1
 
 
-  bot "Installing vim plugins"
-  # cmake is required to compile vim bundle YouCompleteMe
-  # require_brew cmake
-  vim +PluginInstall +qall > /dev/null 2>&1
+#  bot "Installing vim plugins"
+#  # cmake is required to compile vim bundle YouCompleteMe
+#  # require_brew cmake
+#  vim +PluginInstall +qall > /dev/null 2>&1
 
 bot "installing fonts"
 ./fonts/install.sh
 if [ "$(uname)" == "Darwin" ]; then
   brew tap caskroom/fonts
-  require_cask font-fontawesome
   require_cask font-awesome-terminal-fonts
+  require_cask font-firacode-nerd-font-mono
+  require_cask font-firacode-nerd-font
+  require_cask font-fontawesome
   require_cask font-hack
   require_cask font-inconsolata-dz-for-powerline
   require_cask font-inconsolata-g-for-powerline
   require_cask font-inconsolata-for-powerline
+  require_cask font-merriweather
+  require_cask font-merriweather-sans
   require_cask font-roboto-mono
   require_cask font-roboto-mono-for-powerline
   require_cask font-source-code-pro
-  require_cask font-firacode-nerd-font-mono
-  require_cask font-firacode-nerd-font
+  require_cask font-ubuntu
   ok
 
   if [[ -d "/Library/Ruby/Gems/2.0.0" ]]; then
@@ -402,26 +405,6 @@ if [ "$(uname)" == "Darwin" ]; then
   #sudo perl -p -i -e 's|filesz:2M|filesz:10M|g' /private/etc/security/audit_control
   #sudo perl -p -i -e 's|expire-after:10M|expire-after: 30d |g' /private/etc/security/audit_control
 
-  ###############################################################################
-  # SSD-specific tweaks                                                         #
-  ###############################################################################
-
-  # running "Disable local Time Machine snapshots"
-  # sudo tmutil disablelocal;ok
-
-  # running "Disable hibernation (speeds up entering sleep mode)"
-  # sudo pmset -a hibernatemode 0;ok
-
-  # running "Remove the sleep image file to save disk space"
-  # sudo rm -rf /Private/var/vm/sleepimage;ok
-  # running "Create a zero-byte file instead"
-  # sudo touch /Private/var/vm/sleepimage;ok
-  # running "…and make sure it can’t be rewritten"
-  # sudo chflags uchg /Private/var/vm/sleepimage;ok
-
-  running "Disable the sudden motion sensor as it’s not useful for SSDs"
-  sudo pmset -a sms 0;ok
-
   ################################################
   # Optional / Experimental                      #
   ################################################
@@ -482,6 +465,10 @@ if [ "$(uname)" == "Darwin" ]; then
   ################################################
   bot "Standard System Changes"
   ################################################
+
+  running "Menu bar: disable transparency"
+  defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
+  
   running "always boot in verbose mode (not MacOS GUI mode)"
   sudo nvram boot-args="-v";ok
 
@@ -493,9 +480,6 @@ if [ "$(uname)" == "Darwin" ]; then
 
   running "Disable the sound effects on boot"
   sudo nvram SystemAudioVolume=" ";ok
-
-  running "Menu bar: disable transparency"
-  defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
 
   running "Menu bar: hide the Time Machine, Volume, User, and Bluetooth icons"
   for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
@@ -548,11 +532,11 @@ if [ "$(uname)" == "Darwin" ]; then
   # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
   defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true;ok
 
-  running "Disable automatic termination of inactive apps"
-  defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true;ok
+  running "Edit: ALLOW automatic termination of inactive apps"
+  defaults write NSGlobalDomain NSDisableAutomaticTermination -bool false;ok
 
-  running "Disable the crash reporter"
-  defaults write com.apple.CrashReporter DialogType -string "none";ok
+#  running "Disable the crash reporter"
+#  defaults write com.apple.CrashReporter DialogType -string "none";ok
 
   running "Set Help Viewer windows to non-floating mode"
   defaults write com.apple.helpviewer DevMode -bool true;ok
@@ -563,8 +547,8 @@ if [ "$(uname)" == "Darwin" ]; then
   running "Restart automatically if the computer freezes"
   sudo systemsetup -setrestartfreeze on;ok
 
-  running "Never go into computer sleep mode"
-  sudo systemsetup -setcomputersleep 10 > /dev/null;ok
+  running "go into computer sleep mode after 20min"
+  sudo systemsetup -setcomputersleep 20 > /dev/null;ok
 
   running "Check for software updates daily, not just once per week"
   defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1;ok
@@ -578,6 +562,32 @@ if [ "$(uname)" == "Darwin" ]; then
   running "Disable smart dashes as they’re annoying when typing code"
   defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false;ok
 
+###############################################################################
+#  bot "MacBookPro Touch Bar"
+###############################################################################
+
+#  running "Always display full control strip (ignoring App Controls)"
+#  defaults write com.apple.touchbar.agent PresentationModeGlobal fullControlStrip;ok
+
+  ###############################################################################
+  bot "SSD-specific tweaks"
+  ###############################################################################
+
+  # running "Disable local Time Machine snapshots"
+  # sudo tmutil disablelocal;ok
+
+  # running "Disable hibernation (speeds up entering sleep mode)"
+  # sudo pmset -a hibernatemode 0;ok
+
+  # running "Remove the sleep image file to save disk space"
+  # sudo rm -rf /Private/var/vm/sleepimage;ok
+  # running "Create a zero-byte file instead"
+  # sudo touch /Private/var/vm/sleepimage;ok
+  # running "…and make sure it can’t be rewritten"
+  # sudo chflags uchg /Private/var/vm/sleepimage;ok
+
+  running "Disable the sudden motion sensor as it’s not useful for SSDs"
+  sudo pmset -a sms 0;ok
 
   ###############################################################################
   bot "Trackpad, mouse, keyboard, Bluetooth accessories, and input"
@@ -594,11 +604,16 @@ if [ "$(uname)" == "Darwin" ]; then
   defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
   defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true;ok
 
-  #running "Disable 'natural' (Lion-style) scrolling"
+  #running "Edit: DO NOT Disable 'natural' (Lion-style) scrolling"
   #defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false;ok
 
   running "Increase sound quality for Bluetooth headphones/headsets"
   defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40;ok
+
+  running "mute all sounds, incl volume change feedback"
+  defaults write "com.apple.sound.beep.feedback" -int 0
+  defaults write com.apple.systemsound 'com.apple.sound.beep.volume' -float 0
+  defaults write "com.apple.systemsound" "com.apple.sound.uiaudio.enabled" -int 0;ok
 
   running "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
   defaults write NSGlobalDomain AppleKeyboardUIMode -int 3;ok
@@ -621,6 +636,11 @@ if [ "$(uname)" == "Darwin" ]; then
   defaults write NSGlobalDomain AppleLocale -string "de_CH@currency=CHF"
   defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
   defaults write NSGlobalDomain AppleMetricUnits -bool true;ok
+
+  running "Automatically illuminate built-in MacBook keyboard in low light"
+  defaults write com.apple.BezelServices kDim -bool true;ok
+  running "Turn off keyboard illumination when computer is not used for 5 minutes"
+  defaults write com.apple.BezelServices kDimTime -int 300;ok
 
   running "Disable auto-correct"
   defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false;ok
@@ -724,6 +744,9 @@ if [ "$(uname)" == "Darwin" ]; then
   running "Show the ~/Library folder"
   chflags nohidden ~/Library;ok
 
+  running "Show the /Volumes folder"
+  sudo chflags nohidden /Volumes;ok
+
 
   running "Expand the following File Info panes: “General”, “Open with”, and “Sharing & Permissions”"
   defaults write com.apple.finder FXInfoPanesExpanded -dict \
@@ -745,7 +768,7 @@ if [ "$(uname)" == "Darwin" ]; then
   defaults write com.apple.dock mineffect -string "scale";ok
 
   running "Minimize windows into their application’s icon"
-  defaults write com.apple.dock minimize-to-application -bool true;ok
+  defaults write com.apple.dock minimize-to-application -bool false;ok
 
   running "Enable spring loading for all Dock items"
   defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true;ok
@@ -815,6 +838,17 @@ if [ "$(uname)" == "Darwin" ]; then
   ###############################################################################
   bot "Configuring Safari & WebKit"
   ###############################################################################
+
+  running "Privacy: don’t send search queries to Apple"
+  defaults write com.apple.Safari UniversalSearchEnabled -bool false
+  defaults write com.apple.Safari SuppressSearchSuggestions -bool true;ok
+
+  running "Press Tab to highlight each item on a web page"
+  defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
+  defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true;ok
+
+  running "Show the full URL in the address bar (note: this still hides the scheme)"
+  defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true;ok
 
   running "Set Safari’s home page to ‘about:blank’ for faster loading"
   defaults write com.apple.Safari HomePage -string "about:blank";ok
@@ -888,6 +922,13 @@ if [ "$(uname)" == "Darwin" ]; then
   # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
   sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes";ok
   running "Change indexing order and disable some file types from being indexed"
+# Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
+# 	MENU_DEFINITION
+# 	MENU_CONVERSION
+# 	MENU_EXPRESSION
+# 	MENU_SPOTLIGHT_SUGGESTIONS (send search queries to Apple)
+# 	MENU_WEBSEARCH             (send search queries to Apple)
+# 	MENU_OTHER
   defaults write com.apple.spotlight orderedItems -array \
     '{"enabled" = 1;"name" = "APPLICATIONS";}' \
     '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
@@ -904,7 +945,13 @@ if [ "$(uname)" == "Darwin" ]; then
     '{"enabled" = 0;"name" = "MOVIES";}' \
     '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
     '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-    '{"enabled" = 0;"name" = "SOURCE";}';ok
+	'{"enabled" = 0;"name" = "SOURCE";}' \
+	'{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+	'{"enabled" = 0;"name" = "MENU_OTHER";}' \
+	'{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+	'{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+	'{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}';ok
   running "Load new settings before rebuilding the index"
   killall mds > /dev/null 2>&1;ok
   running "Make sure indexing is enabled for the main volume"
@@ -985,9 +1032,28 @@ if [ "$(uname)" == "Darwin" ]; then
   running "Show all processes in Activity Monitor"
   defaults write com.apple.ActivityMonitor ShowCategory -int 0;ok
 
-  running "Sort Activity Monitor results by CPU usage"
-  defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+  running "Sets columns for all tabs"
+  defaults read com.apple.ActivityMonitor "UserColumnsPerTab v5.0" -dict \
+      '0' '( Command, CPUUsage, CPUTime, Threads, PID, UID, Ports )' \
+      '1' '( Command, ResidentSize, Threads, Ports, PID, UID,  )' \
+      '2' '( Command, PowerScore, 12HRPower, AppSleep, UID, powerAssertion )' \
+      '3' '( Command, bytesWritten, bytesRead, Architecture, PID, UID, CPUUsage )' \
+      '4' '( Command, txBytes, rxBytes, PID, UID, txPackets, rxPackets, CPUUsage )';ok
+
+  running "Set sort column"
+  defaults write com.apple.ActivityMonitor UserColumnSortPerTab -dict \
+      '0' '{ direction = 0; sort = CPUUsage; }' \
+      '1' '{ direction = 0; sort = ResidentSize; }' \
+      '2' '{ direction = 0; sort = 12HRPower; }' \
+      '3' '{ direction = 0; sort = bytesWritten; }' \
+      '4' '{ direction = 0; sort = rxBytes; }';ok
   defaults write com.apple.ActivityMonitor SortDirection -int 0;ok
+
+  running "Show Data in the Disk graph (instead of IO)"
+  defaults write com.apple.ActivityMonitor DiskGraphType -int 1;ok
+
+  running "Show Data in the Network graph (instead of packets)"
+  defaults write com.apple.ActivityMonitor NetworkGraphType -int 1;ok
 
   ###############################################################################
   bot "Address Book, Dashboard, iCal, TextEdit, and Disk Utility"
@@ -1020,6 +1086,13 @@ if [ "$(uname)" == "Darwin" ]; then
   defaults write com.apple.appstore ShowDebugMenu -bool true;ok
 
   ###############################################################################
+    bot "Photos"
+  ###############################################################################
+
+  running "Prevent Photos from opening automatically when devices are plugged in"
+  defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true;ok
+
+  ###############################################################################
   bot "Messages"
   ###############################################################################
 
@@ -1033,6 +1106,45 @@ if [ "$(uname)" == "Darwin" ]; then
   defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false;ok
 
   ###############################################################################
+  bot "Google Chrome & Google Chrome Canary"
+  ###############################################################################
+
+  running "Allow installing user scripts via GitHub Gist or Userscripts.org"
+  defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+  defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*";ok
+
+  running "Disable the all too sensitive backswipe on trackpads"
+  defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+  defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false:ok
+
+  running "Disable the all too sensitive backswipe on Magic Mouse"
+  defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+  defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false;ok
+
+#  running "Use the system-native print preview dialog"
+  #defaults write com.google.Chrome DisablePrintPreview -bool true
+  #defaults write com.google.Chrome.canary DisablePrintPreview -bool true;ok
+
+  running "Expand the print dialog by default"
+  defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
+  defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true;ok
+
+  ###############################################################################
+  bot "GPGMail 2"
+  ###############################################################################
+
+  running "Disable signing emails by default"
+  defaults write ~/Library/Preferences/org.gpgtools.gpgmail SignNewEmailsByDefault -bool false;ok
+
+  ###############################################################################
+  bot "Opera & Opera Developer"
+  ###############################################################################
+
+  running "Expand the print dialog by default"
+  defaults write com.operasoftware.Opera PMPrintingExpandedStateForPrint2 -boolean true
+  defaults write com.operasoftware.OperaDeveloper PMPrintingExpandedStateForPrint2 -boolean true;ok
+
+  ###############################################################################
   bot "SizeUp.app"
   ###############################################################################
 
@@ -1042,15 +1154,68 @@ if [ "$(uname)" == "Darwin" ]; then
   running "Don’t show the preferences window on next start"
   defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false;ok
 
-  killall cfprefsd
+  ###############################################################################
+  bot "Spectacle.app"
+  ###############################################################################
 
   ###############################################################################
-  # Kill affected applications                                                  #
+  bot "Twitter.app"
+  ###############################################################################
+
+  running "Disable smart quotes as it’s annoying for code tweets"
+  defaults write com.twitter.twitter-mac AutomaticQuoteSubstitutionEnabled -bool false;ok
+
+  running "Show the app window when clicking the menu bar icon"
+  defaults write com.twitter.twitter-mac MenuItemBehavior -int 1;ok
+
+  running "Enable the hidden ‘Develop’ menu"
+  defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true;ok
+
+  running "Open links in the background"
+  defaults write com.twitter.twitter-mac openLinksInBackground -bool true;ok
+
+  running "Allow closing the ‘new tweet’ window by pressing `Esc`"
+  defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true;ok
+
+  running "Show full names rather than Twitter handles"
+  defaults write com.twitter.twitter-mac ShowFullNames -bool true;ok
+
+  running "Hide the app in the background if it’s not the front-most window"
+  defaults write com.twitter.twitter-mac HideInBackground -bool true;ok
+
+
+  running "Set up my preferred keyboard shortcuts"
+  defaults write com.divisiblebyzero.Spectacle MakeLarger -data 62706c6973743030d40102030405061819582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708101155246e756c6cd4090a0b0c0d0e0d0f596d6f64696669657273546e616d65576b6579436f64655624636c6173731000800280035a4d616b654c6172676572d2121314155a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21617585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11a1b54726f6f74800108111a232d32373c424b555a62696b6d6f7a7f8a939c9fa8b1c3c6cb0000000000000101000000000000001c000000000000000000000000000000cd
+  defaults write com.divisiblebyzero.Spectacle MakeSmaller -data 62706c6973743030d40102030405061819582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708101155246e756c6cd4090a0b0c0d0e0d0f596d6f64696669657273546e616d65576b6579436f64655624636c6173731000800280035b4d616b65536d616c6c6572d2121314155a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21617585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11a1b54726f6f74800108111a232d32373c424b555a62696b6d6f7b808b949da0a9b2c4c7cc0000000000000101000000000000001c000000000000000000000000000000ce
+  defaults write com.divisiblebyzero.Spectacle MoveToBottomDisplay -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002107d80035f10134d6f7665546f426f74746f6d446973706c6179d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a217185d5a65726f4b6974486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e7072888d98a1afb2c0c9dbdee30000000000000101000000000000001d000000000000000000000000000000e5
+  defaults write com.divisiblebyzero.Spectacle MoveToBottomHalf -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002107d80035f10104d6f7665546f426f74746f6d48616c66d2131415165a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21718585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e7072858a959ea7aab3bcced1d60000000000000101000000000000001d000000000000000000000000000000d8
+  defaults write com.divisiblebyzero.Spectacle MoveToCenter -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002100880035c4d6f7665546f43656e746572d2131415165a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21718585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e70727f848f98a1a4adb6c8cbd00000000000000101000000000000001d000000000000000000000000000000d2
+  defaults write com.divisiblebyzero.Spectacle MoveToFullscreen -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002102e80035f10104d6f7665546f46756c6c73637265656ed2131415165a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21718585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e7072858a959ea7aab3bcced1d60000000000000101000000000000001d000000000000000000000000000000d8
+  defaults write com.divisiblebyzero.Spectacle MoveToLeftDisplay -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002107b80035f10114d6f7665546f4c656674446973706c6179d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a217185d5a65726f4b6974486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e7072868b969fadb0bec7d9dce10000000000000101000000000000001d000000000000000000000000000000e3
+  defaults write com.divisiblebyzero.Spectacle MoveToLeftHalf -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002107b80035e4d6f7665546f4c65667448616c66d2131415165a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21718585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e70728186919aa3a6afb8cacdd20000000000000101000000000000001d000000000000000000000000000000d4
+  defaults write com.divisiblebyzero.Spectacle MoveToLowerLeft -data 62706c6973743030d40102030405061a1b582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731113008002107b80035f100f4d6f7665546f4c6f7765724c656674d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a31718195d5a65726f4b6974486f744b6579585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11c1d54726f6f74800108111a232d32373c424b555a62696c6e70728489949dabafbdc6cfe1e4e90000000000000101000000000000001e000000000000000000000000000000eb
+  defaults write com.divisiblebyzero.Spectacle MoveToLowerRight -data 62706c6973743030d40102030405061a1b582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731113008002107c80035f10104d6f7665546f4c6f7765725269676874d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a31718195d5a65726f4b6974486f744b6579585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11c1d54726f6f74800108111a232d32373c424b555a62696c6e7072858a959eacb0bec7d0e2e5ea0000000000000101000000000000001e000000000000000000000000000000ec
+  defaults write com.divisiblebyzero.Spectacle MoveToNextDisplay -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731118008002107c80035f10114d6f7665546f4e657874446973706c6179d2131415165a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21718585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e7072868b969fa8abb4bdcfd2d70000000000000101000000000000001d000000000000000000000000000000d9
+  defaults write com.divisiblebyzero.Spectacle MoveToNextThird -data 62706c6973743030d40102030405061819582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708101155246e756c6cd4090a0b0c0d0e0d0f596d6f64696669657273546e616d65576b6579436f64655624636c6173731000800280035f100f4d6f7665546f4e6578745468697264d2121314155a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21617585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11a1b54726f6f74800108111a232d32373c424b555a62696b6d6f8186919aa3a6afb8cacdd20000000000000101000000000000001c000000000000000000000000000000d4
+  defaults write com.divisiblebyzero.Spectacle MoveToPreviousDisplay -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731118008002107b80035f10154d6f7665546f50726576696f7573446973706c6179d2131415165a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21718585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e70728a8f9aa3acafb8c1d3d6db0000000000000101000000000000001d000000000000000000000000000000dd
+  defaults write com.divisiblebyzero.Spectacle MoveToPreviousThird -data 62706c6973743030d40102030405061819582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708101155246e756c6cd4090a0b0c0d0e0d0f596d6f64696669657273546e616d65576b6579436f64655624636c6173731000800280035f10134d6f7665546f50726576696f75735468697264d2121314155a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21617585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11a1b54726f6f74800108111a232d32373c424b555a62696b6d6f858a959ea7aab3bcced1d60000000000000101000000000000001c000000000000000000000000000000d8
+  defaults write com.divisiblebyzero.Spectacle MoveToRightDisplay -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002107c80035f10124d6f7665546f5269676874446973706c6179d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a217185d5a65726f4b6974486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e7072878c97a0aeb1bfc8dadde20000000000000101000000000000001d000000000000000000000000000000e4
+  defaults write com.divisiblebyzero.Spectacle MoveToRightHalf -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002107c80035f100f4d6f7665546f526967687448616c66d2131415165a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21718585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e70728489949da6a9b2bbcdd0d50000000000000101000000000000001d000000000000000000000000000000d7
+  defaults write com.divisiblebyzero.Spectacle MoveToTopDisplay -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002107e80035f10104d6f7665546f546f70446973706c6179d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a217185d5a65726f4b6974486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e7072858a959eacafbdc6d8dbe00000000000000101000000000000001d000000000000000000000000000000e2
+  defaults write com.divisiblebyzero.Spectacle MoveToTopHalf -data 62706c6973743030d4010203040506191a582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731119008002107e80035d4d6f7665546f546f7048616c66d2131415165a24636c6173736e616d655824636c6173736573585a4b486f744b6579a21718585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11b1c54726f6f74800108111a232d32373c424b555a62696c6e707280859099a2a5aeb7c9ccd10000000000000101000000000000001d000000000000000000000000000000d3
+  defaults write com.divisiblebyzero.Spectacle MoveToUpperLeft -data 62706c6973743030d40102030405061a1b582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731111008002107b80035f100f4d6f7665546f55707065724c656674d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a31718195d5a65726f4b6974486f744b6579585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11c1d54726f6f74800108111a232d32373c424b555a62696c6e70728489949dabafbdc6cfe1e4e90000000000000101000000000000001e000000000000000000000000000000eb
+  defaults write com.divisiblebyzero.Spectacle MoveToUpperRight -data 62706c6973743030d40102030405061a1b582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731111008002107c80035f10104d6f7665546f55707065725269676874d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a31718195d5a65726f4b6974486f744b6579585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11c1d54726f6f74800108111a232d32373c424b555a62696c6e7072858a959eacb0bec7d0e2e5ea0000000000000101000000000000001e000000000000000000000000000000ec
+  defaults write com.divisiblebyzero.Spectacle RedoLastMove -data 62706c6973743030d40102030405061a1b582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c617373110b008002100680035c5265646f4c6173744d6f7665d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a31718195d5a65726f4b6974486f744b6579585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11c1d54726f6f74800108111a232d32373c424b555a62696c6e70727f848f98a6aab8c1cadcdfe40000000000000101000000000000001e000000000000000000000000000000e6
+  defaults write com.divisiblebyzero.Spectacle UndoLastMove -data 62706c6973743030d40102030405061a1b582476657273696f6e58246f626a65637473592461726368697665725424746f7012000186a0a40708111255246e756c6cd4090a0b0c0d0e0f10596d6f64696669657273546e616d65576b6579436f64655624636c6173731109008002100680035c556e646f4c6173744d6f7665d2131415165a24636c6173736e616d655824636c61737365735d5a65726f4b6974486f744b6579a31718195d5a65726f4b6974486f744b6579585a4b486f744b6579584e534f626a6563745f100f4e534b657965644172636869766572d11c1d54726f6f74800108111a232d32373c424b555a62696c6e70727f848f98a6aab8c1cadcdfe40000000000000101000000000000001e000000000000000000000000000000e6;ok
+
+  ###############################################################################
+  bot "Kill affected applications"
   ###############################################################################
   bot "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)...."
   for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-    "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-    "iCal" "Terminal"; do
+	"Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
+	"Opera" "Photos" "Safari" "SizeUp" "Spectacle" "SystemUIServer" "Terminal" \
+	"Transmission" "Tweetbot" "Twitter" "iCal"; do
     killall "${app}" > /dev/null 2>&1
   done
 fi

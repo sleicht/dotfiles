@@ -11,3 +11,9 @@
 	path = hosts
 	url = https://github.com/StevenBlack/hosts.git
 	branch = master
+[submodule "bin/git-friendly"]
+	path = bin/git-friendly
+	url = https://github.com/jamiew/git-friendly.git
+[submodule "fish/functions/pure"]
+	path = fish/functions/pure
+	url = git@github.com:paulirish/pure.git

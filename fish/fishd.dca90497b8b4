@@ -7,3 +7,4 @@ SET fish_color_end:brmagenta
 SET fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SET fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell
 SET fish_key_bindings:fish_default_key_bindings
+SET fish_user_paths:\x1d

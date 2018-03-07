@@ -103,3 +103,4 @@ set -gx LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 #rvm default
 
+nvm use 9.5.0

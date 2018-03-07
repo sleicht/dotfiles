@@ -39,13 +39,6 @@ $HOME/.bin
 
 # yarn global modules (hack for me)
 $HOME/.config/yarn/global/node_modules/.bin
-
-/usr/bin
-/bin
-/usr/sbin
-/sbin
-/opt/X11/bin
-/usr/local/MacGPG2/bin
 "
 
 for entry in (string split \n $paths)
@@ -62,5 +55,5 @@ if test -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fi
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
 end
 
-set -x -g PATH $PA
-launchctl setenv PATH $PATH
+set -x -g PATH $PATH $PA
+launchctl setenv PATH "$PATH"

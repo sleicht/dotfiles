@@ -239,10 +239,11 @@
   smudge = git media smudge %f
 
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
   required = true
   trustExitCode = true
+  process = git-lfs filter-process
 
 [branch]
     # Automatically set up pull to be --rebase

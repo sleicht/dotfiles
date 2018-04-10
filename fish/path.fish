@@ -36,6 +36,8 @@ $HOME/anaconda2/bin
 
 # UserHomeBin
 $HOME/.bin
+# UserLocalHomeBin
+$HOME/.local/bin
 
 # yarn global modules (hack for me)
 $HOME/.config/yarn/global/node_modules/.bin

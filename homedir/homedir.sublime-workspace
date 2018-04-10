@@ -1,0 +1,386 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mode",
+				"mode-mouse"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": ".aliases",
+			"settings":
+			{
+				"buffer_size": 3768,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".tmux.conf",
+			"settings":
+			{
+				"buffer_size": 1141,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "inst",
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"markdow",
+				"Markdown Preview: Save to HTML"
+			],
+			[
+				"prett",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/stephanwork/.dotfiles"
+	],
+	"file_history":
+	[
+		"/Users/stephanwork/.tmuxinator/GSWL-private.yml",
+		"/Users/stephanwork/.dotfiles/homedir/.tmuxinator",
+		"/Users/stephanwork/.dotfiles/homedir/.tmux.conf",
+		"/Users/stephanwork/.dotfiles/fish/aliases.fish",
+		"/Users/stephanwork/git/iso-20022-to-ledger-cli/ledger2beancount.py",
+		"/Users/stephanwork/Downloads/hledger-install.sh",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.git/COMMIT_EDITMSG",
+		"/Users/stephanwork/Desktop/user-capsule-form.component.ts",
+		"/Users/stephanwork/Desktop/message",
+		"/Users/stephanwork/Desktop/user-capsule-form.component.html",
+		"/Users/stephanwork/Desktop/firestore-delete.ts",
+		"/Users/stephanwork/Desktop/tmp.ts",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.git/rebase-merge/git-rebase-todo",
+		"/Users/stephanwork/jessie.ai/website-jessie/.git/rebase-merge/git-rebase-todo",
+		"/Users/stephanwork/jessie.ai/website-jessie/.git/COMMIT_EDITMSG",
+		"/Users/stephanwork/.dotfiles/.git/modules/hosts/COMMIT_EDITMSG",
+		"/Users/stephanwork/.dotfiles/.git/modules/hosts/rebase-merge/git-rebase-todo",
+		"/Volumes/GoogleDrive/My Drive/Shared/Investment/Business Plan/product.md",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.npmrc",
+		"/Users/stephanwork/git/npm/json-sort-cli/.git/COMMIT_EDITMSG",
+		"/Users/stephanwork/.config/yarn/global/node_modules/yarn-upgrade-all/README.md",
+		"/Users/stephanwork/Library/LaunchAgents/my.startup.plist",
+		"/etc/paths",
+		"/Users/stephanwork/.config/fish/config.fish",
+		"/Users/stephanwork/.config/fish/functions/fish_greeting.fish",
+		"/Users/stephanwork/.fish_variables",
+		"/Users/stephanwork/.config/fish/config.fis",
+		"/etc/hosts",
+		"/Users/stephanwork/Downloads/JAIDEV-STEPHAN-FRONTEND/intents/1.1.2 Welcome Start-hello - askName - firstname.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.git/MERGE_MSG",
+		"/Users/stephanlv/CloudStation/Dokumente/markdown-cv/src/stephanlv-cv.md",
+		"/Users/stephanwork/Google Drive/Shared/Company/Human Resources/CV/headline_stephan.md",
+		"/Users/stephanwork/Library/Application Support/Sublime Text 3/Packages/Pretty JSON/Pretty JSON.sublime-settings",
+		"/Users/stephanwork/Library/Application Support/Sublime Text 3/Packages/User/Pretty JSON.sublime-settings",
+		"/Users/stephanwork/Public/Project_ log hours - project,position input context - no webhook_usersays_de.json",
+		"/Users/stephanwork/Downloads/JAIBETA/intents/Project_ log hours - project input context - no webhook_usersays_de.json",
+		"/Users/stephanwork/Public/test2.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/dialogflow/JAIDEV/intents/Projects_ show active projects - no input context - no webhook_usersays_de.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/dialogflow/JAIDEV/intents/Default Welcome Intent - no input context - webhook slot-filling_usersays_de.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/dialogflow/JAIDEV/intents/Project_ change name - project input context - no webhook_usersays_de.json",
+		"/Users/stephanwork/Public/test.bash",
+		"/Users/stephanwork/Downloads/Project_ create position - no context - no webhook - event triggered.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/functions/package.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/functions/tsconfig.json",
+		"/Users/stephanwork/git/npm/angular-datepicker/bin/prebuild/app/common/services/utils/utils.service.js",
+		"/Users/stephanwork/Dropbox/MetaMask",
+		"/Users/stephanwork/Downloads/beta-ng-jessie-ai-firebase-adminsdk-dryi0-bf1f173c98.json",
+		"/Users/stephanwork/Downloads/JAIBETA-NG-JESSIE-AI-a249bc9d6de0.json",
+		"/Users/stephanwork/.ngrok2/ngrok.yml",
+		"/Users/stephanwork/Downloads/invoice-2.pdf",
+		"/Users/stephanwork/Downloads/download.pdf",
+		"/Users/stephanwork/Downloads/german/german.dic",
+		"/Users/stephanwork/git/github-backup/README.md",
+		"/Users/stephanwork/Downloads/Project_ log hours - project input context - no webhook.json",
+		"/Users/stephanwork/Downloads/Project_ show hours - project input context - no webhook.json",
+		"/Users/stephanwork/.dotfiles/homedir/.shellpaths",
+		"/Users/stephanwork/git/.ho",
+		"/Users/stephanwork/Downloads/firebaseFulfillment/firebase/functions/index.js",
+		"/Users/stephanwork/Desktop/thread-navigation.svg",
+		"/Users/stephanwork/Desktop/thread-add_close.svg",
+		"/Users/stephanwork/Desktop/message.svg",
+		"/private/var/folders/1t/4v6g11510h52qx9s5vbhpzg80000gp/T/diagram-6634183212724543512.svg",
+		"/Users/stephanwork/Downloads/Welcome User Intent.json",
+		"/Users/stephanwork/.dotfiles/homedir/.shellvars",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.gitignore",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.prettierrc",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/package.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.prettier.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/node_modules/mocker-data-generator/build/module/index.js",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/node_modules/mocker-data-generator/build/module/lib/Generator.js",
+		"/Users/stephanwork/Downloads/angular-x32n3d/README.md",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai_router/.git/COMMIT_EDITMSG",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai_router/.git/rebase-merge/git-rebase-todo",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/tsconfig.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/webpack.config.js",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/index.html",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/systemjs.config.js",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/src/main.ts",
+		"/Users/stephanwork/.dotfiles/homedir/.zshrc",
+		"/Users/stephanwork/.wakatime.cfg",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai2/package.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai2/src/main.ts",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai2/src/app/app.module.ts",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai2/src/app/app.component.ts",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai2/app.component.ts",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai2/indes.html",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai2/tsconfig.json",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai2/systemjs.config.js",
+		"/Users/stephanwork/ng/platform/package.json",
+		"/Users/stephanwork/ng/platform/package",
+		"/Users/stephanwork/.dotfiles/install.sh",
+		"/Users/stephanwork/.dotfiles/homedir/.gitconfig",
+		"/Users/stephanwork/.yarnrc",
+		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.firebaserc",
+		"/Users/stephanwork/.dotfiles/hosts/whitelist",
+		"/Users/stephanwork/git/osx-compose-key/install.sh",
+		"/Users/stephanwork/.karabiner.d/configuration/karabiner.json",
+		"/Users/stephanwork/.config/karabiner/karabiner.json",
+		"/Users/stephanwork/Library/KeyBindings/DefaultKeyBinding.dict",
+		"/Users/stephanwork/.dotfiles/config.js",
+		"/usr/local/Homebrew/Library/Taps/caskroom/homebrew-versions/.git/COMMIT_EDITMSG",
+		"/usr/local/Homebrew/Library/Taps/caskroom/homebrew-cask/.git/COMMIT_EDITMSG",
+		"/Users/stephanwork/Documents/keybase-private.key",
+		"/Users/stephanwork/Documents/keybase-public.key",
+		"/Users/stephanwork/.gnupg/gpg.conf",
+		"/Users/stephanwork/.dotfiles/homedir/.mackup.cfg",
+		"/Users/stephanwork/Dropbox/Alfred_Settings/Alfred.alfredpreferences/workflows/user.workflow.B2A0B9E2-91F4-4177-961B-B223F583280B/info.plist",
+		"/Users/stephanwork/git/mackup/.git/COMMIT_EDITMSG",
+		"/Users/stephanwork/.gitconfig",
+		"/Users/stephanwork/git/mackup/.git/MERGE_MSG",
+		"/Users/stephanwork/.dotfiles/homedir/.shellaliases",
+		"/Users/stephanwork/.dotfiles/README.md",
+		"/Users/stephanwork/.dotfiles/lib_sh/requirers.sh",
+		"/Users/stephanwork/.dotfiles/.editorconfig",
+		"/Users/stephanwork/.dotfiles/homedir/.profile",
+		"/Users/stephanwork/.dotfiles/homedir/.iterm2_shell_integration.zsh",
+		"/Users/stephanwork/.dotfiles/homedir/.crontab",
+		"/Users/stephanwork/Google Drive/Shared/Human Resources/mailfooter_samuel.html",
+		"/Users/stephanwork/Downloads/solarized/iterm2-colors-solarized/README.md",
+		"/Users/stephanwork/Downloads/license_v2_Stephan_Leicht Vogt.audlic",
+		"/Users/stephanwork/.bash_it/custom/brew_cask.bash",
+		"/Users/stephanwork/.bash_it/custom/example.bash",
+		"/Users/stephanwork/.bash_it/bash_it.sh"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": ".aliases",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3768,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3111,
+								3111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 734.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": ".tmux.conf",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1141,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								326,
+								326
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Generic Config/GenericConfig.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "homedir.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 224.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

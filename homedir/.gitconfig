@@ -111,7 +111,7 @@
   quotepath = false
   # line endings
   # force LF during add
-  autocrlf = input
+	autocrlf = input
   # autocrlf = true # for windows to convert to CRLF on checkout and LF on add
   # warn but allow line ending conversion to proceed
   #safecrlf = warn
@@ -261,8 +261,8 @@
 [log]
   date = relative
 
-[remote "origin"]
-  fetch = +refs/heads/*:refs/remotes/origin/*
+# [remote "origin"]
+#   fetch = +refs/heads/*:refs/remotes/origin/*
 
 [stash]
   showPatch = true

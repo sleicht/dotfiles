@@ -11,24 +11,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": ".aliases",
-			"settings":
-			{
-				"buffer_size": 3768,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": ".tmux.conf",
-			"settings":
-			{
-				"buffer_size": 1141,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -78,13 +60,18 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/stephanwork/.dotfiles"
+		"/Users/stephanwork/.dotfiles",
+		"/Users/stephanwork/.dotfiles/fish"
 	],
 	"file_history":
 	[
+		"/Users/stephanwork/.dotfiles/fish/config.fish",
+		"/Users/stephanwork/.dotfiles/homedir/.aliases",
+		"/Users/stephanwork/.dotfiles/homedir/.tmux.conf",
+		"/Users/stephanwork/.dotfiles/.git/modules/hosts/rebase-merge/git-rebase-todo",
+		"/Users/stephanwork/.dotfiles/.git/MERGE_MSG",
 		"/Users/stephanwork/.tmuxinator/GSWL-private.yml",
 		"/Users/stephanwork/.dotfiles/homedir/.tmuxinator",
-		"/Users/stephanwork/.dotfiles/homedir/.tmux.conf",
 		"/Users/stephanwork/.dotfiles/fish/aliases.fish",
 		"/Users/stephanwork/git/iso-20022-to-ledger-cli/ledger2beancount.py",
 		"/Users/stephanwork/Downloads/hledger-install.sh",
@@ -98,7 +85,6 @@
 		"/Users/stephanwork/jessie.ai/website-jessie/.git/rebase-merge/git-rebase-todo",
 		"/Users/stephanwork/jessie.ai/website-jessie/.git/COMMIT_EDITMSG",
 		"/Users/stephanwork/.dotfiles/.git/modules/hosts/COMMIT_EDITMSG",
-		"/Users/stephanwork/.dotfiles/.git/modules/hosts/rebase-merge/git-rebase-todo",
 		"/Volumes/GoogleDrive/My Drive/Shared/Investment/Business Plan/product.md",
 		"/Users/stephanwork/jessie.ai/ng-jessie-ai/.npmrc",
 		"/Users/stephanwork/git/npm/json-sort-cli/.git/COMMIT_EDITMSG",
@@ -239,71 +225,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": ".aliases",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3768,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3111,
-								3111
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 734.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": ".tmux.conf",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1141,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								326,
-								326
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Generic Config/GenericConfig.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -340,7 +269,7 @@
 	"project": "homedir.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":

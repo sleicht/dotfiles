@@ -33,6 +33,8 @@ $HOME/anaconda2/bin
 #/usr/local/opt/python/libexec/bin
 # gnubin
 /usr/local/opt/make/libexec/gnubin
+# Ruby
+/usr/local/opt/ruby/bin
 
 # UserHomeBin
 $HOME/.bin

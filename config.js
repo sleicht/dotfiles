@@ -6,6 +6,8 @@ module.exports = {
     'angular-cli',
     'bash',
     'bash-completion',
+    // alternative to `cat`: https://github.com/sharkdp/bat
+    'bat',
     'homebrew/completions/brew-cask-completion',
     // Install GNU core utilities (those that come with macOS are outdated)
     // Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -21,8 +23,8 @@ module.exports = {
     // Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
     'findutils',
     'firebase-cli',
+    // 'fortune',
     'fzf',
-    'fortune',
     'readline', // ensure gawk gets good readline
     'gawk',
     // http://www.lcdf.org/gifsicle/ (because I'm a gif junky)
@@ -32,6 +34,8 @@ module.exports = {
     // Install GNU `sed`, overwriting the built-in `sed`
     // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
     'gnu-sed --with-default-names',
+    // upgrade grep so we can get things like inverted match (-v)
+    'grep --with-default-names',
     // github util. gotta love `hub fork`, `hub create`, `hub checkout <PRurl>`
     'hub',
     // better, more recent grep
@@ -64,12 +68,13 @@ module.exports = {
     'terminal-notifier',
     'the_silver_searcher',
     'tmux',
+    'todo-txt',
     'tree',
     'ttyrec',
 
     // Install more recent versions of some OS X tools
     // better, more recent vim
-    'vim --with-override-system-vi',
+    'vim --with-client-server --with-override-system-vi',
     'homebrew/dupes/nano',
     'homebrew/dupes/grep',
     'homebrew/dupes/openssh',
@@ -103,17 +108,19 @@ module.exports = {
     //'comicbooklover',
     'dash',
     //'diffmerge',
+    'docker', // docker for mac
     'dropbox',
     'evernote',
     'firefoxdeveloperedition',
     'firefoxnightly',
+    'flux',
     'fman',
     'franz',
     'gitter',
     'google-chrome',
     'google-chrome-canary',
     'google-cloud-sdk',
-    'gpgtools',
+    'gpg-suite',
     'gyazo',
     'hocus-focus',
     'imagealpha',
@@ -128,6 +135,7 @@ module.exports = {
     'logitech-media-server',
     'logitech-options',
     'logitech-unifying',
+    'macbreakz',
     'micro-snitch',
     'mountain-duck',
     'ngrok',
@@ -135,6 +143,7 @@ module.exports = {
     'path-finder',
     'popchar',
     'postman',
+    'signal',
     //'macvim',
     'sizeup',
     //'sketchup',
@@ -170,8 +179,8 @@ module.exports = {
     'git-open'
     // fancy listing of recent branches
     'git-recent',
-    'gulp',
-    'npm-check',
+    // 'gulp',
+    'npm-check-updates',
     'prettyjson',
     'trash',
     // trash as the safe `rm` alternative

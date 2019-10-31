@@ -4,6 +4,8 @@ module.exports = {
     'ack',
     'ag',
     'angular-cli',
+    // https://github.com/wting/autojump
+    'autojump',
     'bash',
     'bash-completion',
     // alternative to `cat`: https://github.com/sharkdp/bat

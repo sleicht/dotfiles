@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#TODO: update after macOS Catalina, default mac shell: bash is changing to zsh
+
 ###########################
 # This script installs the dotfiles and runs all other system configuration scripts
 # @author Adam Eivy
@@ -157,10 +159,29 @@ fi
 # ###########################################################
 # Install non-brew various tools (PRE-BREW Installs)
 # ###########################################################
+
 bot "ensuring build/install tools are available"
-xcode-select --install 2>&1 > /dev/null
-sudo xcode-select -s /Applications/Xcode.app/Contents/Developer 2>&1 > /dev/null
-sudo xcodebuild -license accept 2>&1 > /dev/null
+if ! xcode-select --print-path &> /dev/null; then
+
+    # Prompt user to install the XCode Command Line Tools
+    xcode-select --install &> /dev/null
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Wait until the XCode Command Line Tools are installed
+    until xcode-select --print-path &> /dev/null; do
+        sleep 5
+    done
+
+    print_result $? ' XCode Command Line Tools Installed'
+
+    # Prompt user to agree to the terms of the Xcode license
+    # https://github.com/alrra/dotfiles/issues/10
+
+    sudo xcodebuild -license
+    print_result $? 'Agree with the XCode Command Line Tools licence'
+
+fi
 
 # ###########################################################
 # install homebrew (CLI Packages)
@@ -190,17 +211,9 @@ else
   fi
 fi
 
-# ###########################################################
-# install brew cask (UI Packages)
-# ###########################################################
-running "checking brew-cask install"
-output=$(brew tap | grep cask)
-if [[ $? != 0 ]]; then
-  action "installing brew-cask"
-  require_brew caskroom/cask/brew-cask
-fi
-brew tap caskroom/versions > /dev/null 2>&1
-ok
+# Just to avoid a potential bug
+mkdir -p ~/Library/Caches/Homebrew/Formula
+brew doctor
 
 # skip those GUI clients, git command-line all the way
 require_brew git
@@ -271,7 +284,7 @@ if [[ $response =~ (y|yes|Y) ]];then
   # need fontconfig to install/build fonts
   require_brew fontconfig
   ./fonts/install.sh
-  brew tap caskroom/fonts
+  brew tap homebrew/cask-fonts
   require_cask font-awesome-terminal-fonts
   require_cask font-firacode-nerd-font-mono
   require_cask font-firacode-nerd-font
@@ -452,6 +465,25 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
   # sudo scutil --set LocalHostName "antic"
   # sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "antic"
 
+#setting up the computer label & name
+read -p "What is this machine's label (Example: Paul's MacBook Pro ) ? " mac_os_label
+if [[ -z "$mac_os_label" ]]; then
+  echo "ERROR: Invalid MacOS label."
+  exit 1
+fi
+
+read -p "What is this machine's name (Example: paul-macbook-pro ) ? " mac_os_name
+if [[ -z "$mac_os_name" ]]; then
+  echo "ERROR: Invalid MacOS name."
+  exit 1
+fi
+
+echo "Setting system Label and Name..."
+sudo scutil --set ComputerName "$mac_os_label"
+sudo scutil --set HostName "$mac_os_name"
+sudo scutil --set LocalHostName "$mac_os_name"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$mac_os_name"
+
   # running "Disable smooth scrolling"
   # (Uncomment if you’re on an older Mac that messes up the animation)
   # defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false;ok
@@ -565,8 +597,9 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   running "Disable the “Are you sure you want to open this application?” dialog"
   defaults write com.apple.LaunchServices LSQuarantine -bool false;ok
 
-  running "Remove duplicates in the “Open With” menu (also see 'lscleanup' alias)"
-  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;ok
+# https://github.com/atomantic/dotfiles/issues/30#issuecomment-514589462
+#running "Remove duplicates in the “Open With” menu (also see 'lscleanup' alias)"
+#/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;ok
 
   running "Display ASCII control characters using caret notation in standard text views"
   # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
@@ -711,7 +744,8 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   ###############################################################################
   bot "Finder Configs"
   ###############################################################################
-  running "Keep folders on top when sorting by name (Sierra only)"
+
+  running "Keep folders on top when sorting by name (version 10.12 and later)"
   defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
   running "Allow quitting via ⌘ + Q; doing so will also hide desktop icons"
@@ -781,11 +815,12 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   running "Enable AirDrop over Ethernet and on unsupported Macs running Lion"
   defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true;ok
 
+# Issue on macOS Mojave, for more info
+# check https://github.com/mathiasbynens/dotfiles/issues/865
   running "Show the ~/Library folder"
-  chflags nohidden ~/Library;ok
-
+  xattr -d com.apple.FinderInfo ~/Library 2>/dev/null
   running "Show the /Volumes folder"
-  sudo chflags nohidden /Volumes;ok
+  xattr -d com.apple.FinderInfo /Volumes 2>/dev/null
 
 
   running "Expand the following File Info panes: “General”, “Open with”, and “Sharing & Permissions”"
@@ -826,11 +861,15 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   # (i.e. use the old Exposé behavior instead)
   defaults write com.apple.dock expose-group-by-app -bool false;ok
 
-  running "Disable Dashboard"
-  defaults write com.apple.dashboard mcx-disabled -bool true;ok
 
-  running "Don’t show Dashboard as a Space"
-  defaults write com.apple.dock dashboard-in-overlay -bool true;ok
+# Dashboard is disabled by default on macOS Mojave,
+# Moreover as of macOS 10.15 Catalina, Dashboard is removed macOS.
+
+# running "Disable Dashboard"
+# defaults write com.apple.dashboard mcx-disabled -bool true;ok
+
+# running "Don’t show Dashboard as a Space"
+# defaults write com.apple.dock dashboard-in-overlay -bool true;ok
 
   running "Don’t automatically rearrange Spaces based on most recent use"
   defaults write com.apple.dock mru-spaces -bool false;ok
@@ -849,8 +888,20 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   running "Make Dock more transparent"
   defaults write com.apple.dock hide-mirror -bool true;ok
 
+# defaults write com.apple.dock ResetLaunchPad -bool TRUE
   running "Reset Launchpad, but keep the desktop wallpaper intact"
   find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete;ok
+
+# You can change the layout of your Launchpad
+# Use the following command in Terminal to change the layout of Launchpad.
+# Change ‘X’ into the number of icons to be showed in a single row (e.g 9).
+#defaults write com.apple.dock springboard-columns -int 9
+
+# Change ‘X’ to the number of rows (e.g 3).
+#defaults write com.apple.dock springboard-rows -int 3
+
+# Force a restart of Launchpad with the following command to apply the changes:
+#defaults write com.apple.dock ResetLaunchPad -bool TRUE;killall Dock
 
   bot "Configuring Hot Corners"
   # Possible values:
@@ -896,6 +947,8 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   running "Prevent Safari from opening ‘safe’ files automatically after downloading"
   defaults write com.apple.Safari AutoOpenSafeDownloads -bool false;ok
 
+# TODO : doesn't work on macOS Mojave,
+# check for more info : https://apple.stackexchange.com/questions/338313/how-can-i-enable-backspace-to-go-back-in-safari-on-mojave
   running "Allow hitting the Backspace key to go to the previous page in history"
   defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true;ok
 
@@ -958,9 +1011,14 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   # running "Hide Spotlight tray-icon (and subsequent helper)"
   # sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search;ok
 
-  running "Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed"
-  # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
-  sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes";ok
+
+# Issue on macOS Mojave :
+# Rich Trouton covers the move of /Volumes to no longer being world writable as of Sierra (10.12)
+# https://derflounder.wordpress.com/2016/09/21/macos-sierras-volumes-folder-is-no-longer-world-writable
+
+# running "Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed"
+# Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
+# sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes";ok
   running "Change indexing order and disable some file types from being indexed"
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
 # 	MENU_DEFINITION
@@ -1056,8 +1114,8 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   running "Prevent Time Machine from prompting to use new hard drives as backup volume"
   defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true;ok
 
-  running "Disable local Time Machine backups"
-  hash tmutil &> /dev/null && sudo tmutil disablelocal;ok
+# running "Disable local Time Machine backups"
+# hash tmutil &> /dev/null && sudo tmutil disablelocal;ok
 
   ###############################################################################
   bot "Activity Monitor"
@@ -1069,8 +1127,18 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
   running "Visualize CPU usage in the Activity Monitor Dock icon"
   defaults write com.apple.ActivityMonitor IconType -int 5;ok
 
-  running "Show all processes in Activity Monitor"
-  defaults write com.apple.ActivityMonitor ShowCategory -int 0;ok
+# Show processes in Activity Monitor
+# 100: All Processes
+# 101: All Processes, Hierarchally
+# 102: My Processes
+# 103: System Processes
+# 104: Other User Processes
+# 105: Active Processes
+# 106: Inactive Processes
+# 106: Inactive Processes
+# 107: Windowed Processes
+running "Show all processes in Activity Monitor"
+defaults write com.apple.ActivityMonitor ShowCategory -int 100;ok
 
   running "Sets columns for all tabs"
   defaults read com.apple.ActivityMonitor "UserColumnsPerTab v5.0" -dict \
@@ -1088,6 +1156,42 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
       '3' '{ direction = 0; sort = bytesWritten; }' \
       '4' '{ direction = 0; sort = rxBytes; }';ok
   defaults write com.apple.ActivityMonitor SortDirection -int 0;ok
+
+running "Set columns for each tab"
+defaults write com.apple.ActivityMonitor "UserColumnsPerTab v5.0" -dict \
+    '0' '( Command, CPUUsage, CPUTime, Threads, PID, UID, Ports )' \
+    '1' '( Command, ResidentSize, Threads, Ports, PID, UID,  )' \
+    '2' '( Command, PowerScore, 12HRPower, AppSleep, UID, powerAssertion )' \
+    '3' '( Command, bytesWritten, bytesRead, Architecture, PID, UID, CPUUsage )' \
+    '4' '( Command, txBytes, rxBytes, PID, UID, txPackets, rxPackets, CPUUsage )';ok
+
+running "Sort columns in each tab"
+defaults write com.apple.ActivityMonitor UserColumnSortPerTab -dict \
+    '0' '{ direction = 0; sort = CPUUsage; }' \
+    '1' '{ direction = 0; sort = ResidentSize; }' \
+    '2' '{ direction = 0; sort = 12HRPower; }' \
+    '3' '{ direction = 0; sort = bytesWritten; }' \
+    '4' '{ direction = 0; sort = txBytes; }';ok
+
+running "Update refresh frequency (in seconds)"
+# 1: Very often (1 sec)
+# 2: Often (2 sec)
+# 5: Normally (5 sec)
+defaults write com.apple.ActivityMonitor UpdatePeriod -int 2;ok
+
+running "Show Data in the Disk graph (instead of IO)"
+defaults write com.apple.ActivityMonitor DiskGraphType -int 1;ok
+
+running "Show Data in the Network graph (instead of packets)"
+defaults write com.apple.ActivityMonitor NetworkGraphType -int 1;ok
+
+running "Change Dock Icon"
+# 0: Application Icon
+# 2: Network Usage
+# 3: Disk Activity
+# 5: CPU Usage
+# 6: CPU History
+defaults write com.apple.ActivityMonitor IconType -int 3;ok
 
   running "Show Data in the Disk graph (instead of IO)"
   defaults write com.apple.ActivityMonitor DiskGraphType -int 1;ok
@@ -1257,6 +1361,7 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
   "iCal" "Terminal"; do
   killall "${app}" > /dev/null 2>&1
 done
-fi
+
+brew update && brew upgrade && brew cleanup && brew cask cleanup
 
 bot "Woot! All done"

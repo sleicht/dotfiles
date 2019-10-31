@@ -103,4 +103,4 @@ set -gx LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 #rvm default
 status --is-interactive; and source (rbenv init -|psub)
-nvm use 10.3.0
+nvm use stable

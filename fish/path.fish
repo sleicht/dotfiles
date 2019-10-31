@@ -20,11 +20,9 @@ end
 # 	set PA $PA /Users/paulirish/.rvm/gems/ruby-2.2.1/bin
 # end
 
-
 set -l paths "
 # yarn binary
 $HOME/.yarn/bin
-$GOPATH/bin
 #Brew
 /usr/local/bin
 # Anaconda
@@ -32,7 +30,7 @@ $HOME/anaconda2/bin
 # Python
 #/usr/local/opt/python/libexec/bin
 # gnubin
-/usr/local/opt/make/libexec/gnubin
+#/usr/local/opt/make/libexec/gnubin
 # Ruby
 /usr/local/opt/ruby/bin
 
@@ -59,5 +57,5 @@ if test -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fi
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
 end
 
-set -x -g PATH $PATH $PA
+set -x -g PATH $PA $PATH
 launchctl setenv PATH "$PATH"

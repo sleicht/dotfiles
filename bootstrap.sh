@@ -11,6 +11,7 @@ function doIt() {
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
+		--exclude ".idea" \
 		-avh --no-perms . ~;
 	# shellcheck disable=SC1090
 	source ~/.bash_profile;

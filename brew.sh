@@ -21,10 +21,10 @@ brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+brew install gnu-sed
 # Install a modern version of Bash.
 brew install bash
-brew install bash-completion2
+brew install bash-completion@2
 
 # Switch to using brew-installed bash as default shell
 if ! grep -Fq "${BREW_PREFIX}/bin/bash" /etc/shells; then
@@ -33,18 +33,16 @@ if ! grep -Fq "${BREW_PREFIX}/bin/bash" /etc/shells; then
 fi;
 
 # Install `wget` with IRI support.
-brew install wget --with-iri
+brew install wget
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install vim
 brew install grep
 brew install openssh
 brew install screen
-brew install php
-brew install gmp
 
 # Install font tools.
 brew tap bramstein/webfonttools
@@ -84,7 +82,7 @@ brew install ack
 brew install git
 brew install git-lfs
 brew install gs
-brew install imagemagick --with-webp
+brew install imagemagick
 brew install lua
 brew install lynx
 brew install p7zip
@@ -96,6 +94,41 @@ brew install ssh-copy-id
 brew install tree
 brew install vbindiff
 brew install zopfli
+brew install archey4
+brew install git-flow-avh
+brew install nvm
+brew install devdash
+brew install htop
+brew install font-roboto font-fira-code font-fira-code-nerd-font font-fira-mono-for-powerline font-liberation
+
+# Install macos casks
+brew install --cask google-chrome google-drive
+brew install --cask google-cloud-sdk
+brew install --cask bettertouchtool logitech-options
+brew install --cask alfred
+brew install --cask sublime-text
+brew install --cask kitty
+brew install --cask dash
+brew install --cask dropbox kdrive beyond-compare
+brew install --cask cleanmymac
+brew install --cask bartender
+brew install --cask logseq
+brew install --cask daisydisk
+brew install --cask fantastical
+brew install --cask threema-work slack
+brew install --cask roon tidal qobuz
+brew install --cask affinity-designer affinity-photo affinity-publisher
+brew install --cask iterm2
+brew install --cask arc
+brew install --cask bitwarden
+brew install --cask sizeup cinch
+brew install --cask path-finder
+brew install --cask istat-menus
+brew install --cask readdle-spark
+brew install --cask jetbrains-toolbox
+
+brew install --cask vlc
+brew install --cask xld
 
 # Remove outdated versions from the cellar.
 brew cleanup

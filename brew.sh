@@ -99,12 +99,13 @@ brew install git-flow-avh
 brew install devdash
 brew install htop
 brew install font-roboto font-fira-code font-fira-code-nerd-font font-fira-mono-for-powerline font-liberation
+brew install koekeishiya/formulae/yabai
 
 # Install macos casks
 brew tap homebrew/cask-drivers
 brew install --cask google-chrome google-drive
 brew install --cask google-cloud-sdk
-brew install --cask bettertouchtool logitech-options uhk-agent karabiner-elements
+brew install --cask logitech-options uhk-agent karabiner-elements
 brew install --cask alfred
 brew install --cask sublime-text
 brew install --cask kitty

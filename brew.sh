@@ -51,30 +51,30 @@ brew install sfnt2woff-zopfli
 brew install woff2
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
-brew install aircrack-ng
-brew install bfg
-brew install binutils
-brew install binwalk
-brew install cifer
-brew install dex2jar
-brew install dns2tcp
-brew install fcrackzip
-brew install foremost
-brew install hashpump
-brew install hydra
-brew install john
-brew install knock
-brew install netpbm
-brew install nmap
-brew install pngcheck
-brew install socat
-brew install sqlmap
-brew install tcpflow
-brew install tcpreplay
-brew install tcptrace
-brew install ucspi-tcp # `tcpserver` etc.
-brew install xpdf
-brew install xz
+brew uninstall aircrack-ng
+brew uninstall bfg
+brew uninstall binutils
+brew uninstall binwalk
+brew uninstall cifer
+brew uninstall dex2jar
+brew uninstall dns2tcp
+brew uninstall fcrackzip
+brew uninstall foremost
+brew uninstall hashpump
+brew uninstall hydra
+brew uninstall john
+brew uninstall knock
+brew uninstall netpbm
+brew uninstall nmap
+brew uninstall pngcheck
+brew uninstall socat
+brew uninstall sqlmap
+brew uninstall tcpflow
+brew uninstall tcpreplay
+brew uninstall tcptrace
+brew uninstall ucspi-tcp # `tcpserver` etc.
+brew uninstall xpdf
+brew uninstall xz
 
 # Install other useful binaries.
 brew install ack
@@ -102,9 +102,10 @@ brew install htop
 brew install font-roboto font-fira-code font-fira-code-nerd-font font-fira-mono-for-powerline font-liberation
 
 # Install macos casks
+brew tap homebrew/cask-drivers
 brew install --cask google-chrome google-drive
 brew install --cask google-cloud-sdk
-brew install --cask bettertouchtool logitech-options
+brew install --cask bettertouchtool logitech-options uhk-agent karabiner-elements
 brew install --cask alfred
 brew install --cask sublime-text
 brew install --cask kitty

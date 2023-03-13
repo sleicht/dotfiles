@@ -4,10 +4,15 @@ export PATH="$HOME/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH";
 # Add brew to path
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Load login settings and environment variables
+if [[ -f ~/.profile ]]; then
+  source ~/.profile
+fi
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in ~/.{path,bash_prompt,exports,aliases,functions,oh_my_bash,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;

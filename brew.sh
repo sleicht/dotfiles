@@ -131,5 +131,8 @@ brew install --cask jetbrains-toolbox
 brew install --cask vlc
 brew install --cask xld
 
+brew install helm
+brew install --cask lens
+
 # Remove outdated versions from the cellar.
 brew cleanup

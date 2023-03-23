@@ -96,7 +96,6 @@ brew install vbindiff
 brew install zopfli
 brew install archey4
 brew install git-flow-avh
-brew install nvm
 brew install devdash
 brew install htop
 brew install font-roboto font-fira-code font-fira-code-nerd-font font-fira-mono-for-powerline font-liberation

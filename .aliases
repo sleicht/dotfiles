@@ -156,7 +156,7 @@ alias reload="exec ${SHELL} -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 # k for kubectl, so you don't have to write kubectl everytime, but can use the single letter k instead (e.g. k get pods -n <your-namespace>)
-alias k=kubectl $*
+alias k=kubectl "$@"
 
 # Shortcuts to connect to the kubernetes clusters, so you only have to write pddev and don't need to select from the menu
 alias pddev="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.sh pddev"

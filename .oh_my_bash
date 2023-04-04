@@ -10,6 +10,7 @@ export OSH="${HOME}/.oh-my-bash"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
+# shellcheck disable=SC2034
 OSH_THEME="powerline-multiline"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -17,6 +18,7 @@ OSH_THEME="powerline-multiline"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
+# shellcheck disable=SC2034
 OMB_HYPHEN_SENSITIVE="false"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -35,6 +37,7 @@ OMB_HYPHEN_SENSITIVE="false"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# shellcheck disable=SC2034
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -52,6 +55,7 @@ COMPLETION_WAITING_DOTS="true"
 # * '[dd.mm.yyyy]'   # [dd.mm.yyyy] + [time] with colors
 # * '[yyyy-mm-dd]'   # [yyyy-mm-dd] + [time] with colors
 # If not set, the default value is 'yyyy-mm-dd'.
+# shellcheck disable=SC2034
 HIST_STAMPS='[yyyy-mm-dd]'
 
 # Uncomment the following line if you do not want OMB to overwrite the existing
@@ -63,6 +67,7 @@ HIST_STAMPS='[yyyy-mm-dd]'
 
 # To disable the uses of "sudo" by oh-my-bash, please set "false" to
 # this variable.  The default behavior for the empty value is "true".
+# shellcheck disable=SC2034
 OMB_USE_SUDO=true
 
 # To enable/disable display of Python virtualenv and condaenv
@@ -73,6 +78,7 @@ OMB_USE_SUDO=true
 # Custom completions may be added to ~/.oh-my-bash/custom/completions/
 # Example format: completions=(ssh git bundler gem pip pip3)
 # Add wisely, as too many completions slow down shell startup.
+# shellcheck disable=SC2034
 completions=(
   git
   composer
@@ -83,6 +89,7 @@ completions=(
 # Custom aliases may be added to ~/.oh-my-bash/custom/aliases/
 # Example format: aliases=(vagrant composer git-avh)
 # Add wisely, as too many aliases slow down shell startup.
+# shellcheck disable=SC2034
 aliases=(
   general
 )
@@ -91,6 +98,7 @@ aliases=(
 # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# shellcheck disable=SC2034
 plugins=(
   git
   bashmarks
@@ -107,6 +115,7 @@ plugins=(
 #      plugins+=(tmux-autoattach)
 #  fi
 
+# shellcheck disable=SC1091
 source "$OSH"/oh-my-bash.sh
 
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"

@@ -127,6 +127,7 @@ brew install --cask path-finder
 brew install --cask istat-menus
 brew install --cask readdle-spark
 brew install --cask jetbrains-toolbox
+brew install --cask finicky
 
 brew install --cask vlc
 brew install --cask xld

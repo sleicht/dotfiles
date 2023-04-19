@@ -1,5 +1,5 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH";
+export PATH="$HOME/bin:/opt/homebrew/opt/grep/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH";
 
 # Add brew to path
 eval "$(/opt/homebrew/bin/brew shellenv)"

@@ -33,6 +33,7 @@ fi
 
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
+alias ll="ls -lF ${colorflag}"
 
 # List all files colorized in long format, excluding . and ..
 alias la="ls -lAF ${colorflag}"
@@ -54,6 +55,10 @@ alias sudo='sudo '
 
 # Get week number
 alias week='date +%V'
+
+# Brew rosetta aliases
+alias ibrew='arch -x86_64 /usr/local/bin/brew'
+alias mbrew='arch -ar64e /opt/homebrew/bin/brew'
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'

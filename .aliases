@@ -167,3 +167,6 @@ alias k=kubectl "$@"
 alias pddev="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.sh pddev"
 alias pdacc="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.sh pdacc"
 alias pdprd="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.sh pdprd"
+
+# Shortcuts for the sanitas google secret management scrip
+alias sgsm="$HOME/git/infrastructure/devops-scripts/bin/secret-management.sh"

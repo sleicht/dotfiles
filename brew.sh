@@ -107,6 +107,7 @@ brew install --cask google-chrome google-drive
 brew install --cask google-cloud-sdk
 brew install --cask logitech-options uhk-agent karabiner-elements
 brew install --cask alfred
+brew install --cask raycast
 brew install --cask sublime-text
 brew install --cask kitty
 brew install --cask dash

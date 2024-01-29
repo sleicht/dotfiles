@@ -14,7 +14,7 @@ alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
-alias g="git"
+alias g="cd ~/git"
 
 alias gs="git status"
 alias gd="git diff"
@@ -77,10 +77,13 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 
 # Flush Directory Service cache
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+alias flush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
+# Brew Services
+alias bs="brew services"
 
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
@@ -144,8 +147,8 @@ alias map="xargs -n1"
 #done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume output volume 100'"
+alias stfu="osascript -e 'set volume output muted true' && echo 'shhh! I am trying to sleep!'"
+alias pumpitup="osascript -e 'set volume 7' && echo 'Dialed to 11!'"
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
@@ -164,6 +167,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias k=kubectl "$@"
 
 # Shortcuts to connect to the kubernetes clusters, so you only have to write pddev and don't need to select from the menu
+alias ctgc="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.sh"
 alias pddev="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.sh pddev"
 alias pdacc="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.sh pdacc"
 alias pdprd="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.sh pdprd"

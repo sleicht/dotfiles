@@ -1,10 +1,12 @@
 [alias]
 
-	# View abbreviated SHA, description, and history graph of the latest 20 commits.
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	# View the SHA, description, and history graph of the latest 50 commits.
+	l = log --pretty=oneline -n 50 --graph --decorate --abbrev-commit
 
 	# View the current working tree status using the short format.
-	s = status -s
+	ss = status -s
+	# View regular status.
+	s = status
 
 	# Show the diff between the latest commit and the current state.
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
@@ -26,8 +28,9 @@
 
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
-	branches = branch --all
-	remotes = remote --verbose
+	branches = branch -a -vv
+	remotes = remote -v
+	diffc = diff --word-diff=color
 
 	# List aliases.
 	aliases = config --get-regexp alias
@@ -95,6 +98,11 @@
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
 
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
 	# Speed up commands involving untracked files such as `git status`.
 	# https://git-scm.com/docs/git-update-index#_untracked_cache
 	untrackedCache = true
@@ -115,8 +123,8 @@
 
 	meta = yellow bold
 	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
+	old = red bold # deletions
+	new = green bold # additions
 
 [color "status"]
 

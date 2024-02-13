@@ -44,97 +44,124 @@ brew install grep
 brew install openssh
 brew install screen
 
-# Install font tools.
+## Install font tools.
 brew tap bramstein/webfonttools
 brew install sfnt2woff
 brew install sfnt2woff-zopfli
 brew install woff2
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
-brew uninstall aircrack-ng
-brew uninstall bfg
-brew uninstall binutils
-brew uninstall binwalk
-brew uninstall cifer
-brew uninstall dex2jar
-brew uninstall dns2tcp
-brew uninstall fcrackzip
-brew uninstall foremost
-brew uninstall hashpump
-brew uninstall hydra
-brew uninstall john
-brew uninstall knock
-brew uninstall netpbm
-brew uninstall nmap
-brew uninstall pngcheck
-brew uninstall socat
-brew uninstall sqlmap
-brew uninstall tcpflow
-brew uninstall tcpreplay
-brew uninstall tcptrace
-brew uninstall ucspi-tcp # `tcpserver` etc.
-brew uninstall xpdf
-brew uninstall xz
+brew uninstall -f aircrack-ng
+brew uninstall -f bfg
+brew uninstall -f binutils
+brew uninstall -f binwalk
+brew uninstall -f cifer
+brew uninstall -f dex2jar
+brew uninstall -f dns2tcp
+brew uninstall -f fcrackzip
+brew uninstall -f foremost
+brew uninstall -f hashpump
+brew uninstall -f hydra
+brew uninstall -f john
+brew uninstall -f knock
+brew uninstall -f netpbm
+brew uninstall -f nmap
+brew uninstall -f pngcheck
+brew uninstall -f socat
+brew uninstall -f sqlmap
+brew uninstall -f tcpflow
+brew uninstall -f tcpreplay
+brew uninstall -f tcptrace
+brew uninstall -f ucspi-tcp
+brew uninstall -f xpdf
 
 # Install other useful binaries.
+brew tap homebrew/cask-fonts
 brew install ack
-#brew install exiv2
+brew install archey4
+brew install argocd
+brew install devdash
+brew install docker
+brew install docker-compose
+brew install gh
 brew install git
+brew install git-flow-avh
 brew install git-lfs
+brew install glab
 brew install gs
+brew install helm
+brew install htop
 brew install imagemagick
+brew install jfrog-cli
+brew install jq
 brew install lua
 brew install lynx
+brew install ncdu
 brew install p7zip
 brew install pigz
+brew install pnpm
 brew install pv
 brew install rename
 brew install rlwrap
 brew install ssh-copy-id
+brew install terraform
+brew install tmux
 brew install tree
+brew install vale
 brew install vbindiff
+brew install yarn
 brew install zopfli
-brew install archey4
-brew install git-flow-avh
-brew install devdash
-brew install htop
 brew install font-roboto font-fira-code font-fira-code-nerd-font font-fira-mono-for-powerline font-liberation
 brew install koekeishiya/formulae/yabai
 
 # Install macos casks
-brew tap homebrew/cask-drivers
-brew install --cask google-chrome google-drive
-brew install --cask google-cloud-sdk
-brew install --cask logitech-options uhk-agent karabiner-elements
-brew install --cask alfred
-brew install --cask raycast
-brew install --cask sublime-text
-brew install --cask kitty
-brew install --cask dash
-brew install --cask dropbox kdrive beyond-compare
-brew install --cask cleanmymac
-brew install --cask bartender
-brew install --cask logseq
-brew install --cask daisydisk
-brew install --cask fantastical
-brew install --cask threema-work slack
-brew install --cask roon tidal qobuz
 brew install --cask affinity-designer affinity-photo affinity-publisher
-brew install --cask iterm2
 brew install --cask arc
+brew install --cask apache-directory-studio
+brew install --cask bartender
+brew install --cask bettertouchtool
+brew install --cask beyond-compare
 brew install --cask bitwarden
-brew install --cask sizeup cinch
-brew install --cask path-finder
-brew install --cask istat-menus
-brew install --cask readdle-spark
-brew install --cask jetbrains-toolbox
+brew install --cask camunda-modeler
+brew install --cask cinch
+brew install --cask citrix-workspace
+brew install --cask cleanmymac
+brew install --cask confluent-cli
+brew install --cask daisydisk
+brew install --cask dash
+brew install --cask deepl
+brew install --cask dropbox
+brew install --cask fantastical
 brew install --cask finicky
-
+brew install --cask fman
+brew install --cask git-credential-manager
+brew install --cask google-chrome
+brew install --cask google-cloud-sdk
+brew install --cask google-drive
+brew install --cask lens
+brew install --cask istat-menus
+brew install --cask jetbrains-toolbox
+brew install --cask jprofiler
+brew install --cask karabiner-elements
+brew install --cask kdrive
+brew install --cask keystore-explorer
+brew install --cask kitty
+brew install --cask lens
+brew install --cask logi-options-plus
+brew install --cask logseq
+brew install --cask miro
+brew install --cask raindropio
+brew install --cask raycast
+brew install --cask roon
+brew install --cask sizeup
+brew install --cask slack
+brew install --cask readdle-spark
+brew install --cask sublime-text
+brew install --cask tidal
+brew install --cask uhk-agent
+brew install --cask visualvm
 brew install --cask vlc
 brew install --cask xld
-
-brew install helm
-brew install --cask lens
 
 # Remove outdated versions from the cellar.
 brew cleanup

@@ -80,9 +80,12 @@ brew tap homebrew/cask-fonts
 brew install ack
 brew install archey4
 brew install argocd
+brew install bat
+brew install broot
 brew install devdash
 brew install docker
 brew install docker-compose
+brew install eza
 brew install gh
 brew install git
 brew install git-flow-avh

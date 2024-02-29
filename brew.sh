@@ -86,6 +86,7 @@ brew install devdash
 brew install docker
 brew install docker-compose
 brew install eza
+brew install fzf
 brew install gh
 brew install git
 brew install git-flow-avh

@@ -1,5 +1,9 @@
 [alias]
 
+	# better branch, with number commits ahead and behind upstream,
+	# ordered by most recent commit
+	bb = "!git for-each-ref --sort='-committerdate' --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) %(color:green)%(committerdate:relative)%(color:reset) - %(color:blue)%(subject)%(color:reset) %(color:magenta)%(trailers:unfold,only,separator=%0A)%(color:reset)' refs/heads"
+
 	# View the SHA, description, and history graph of the latest 50 commits.
 	l = log --pretty=oneline -n 50 --graph --decorate --abbrev-commit
 
@@ -22,6 +26,9 @@
 
 	# Commit all changes.
 	ca = !git add -A && git commit -av
+
+	# Cherrypick
+	cp = cherry-pick
 
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"

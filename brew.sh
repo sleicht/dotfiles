@@ -115,7 +115,7 @@ brew install vale
 brew install vbindiff
 brew install yarn
 brew install zopfli
-brew install font-roboto font-fira-code font-fira-code-nerd-font font-fira-mono-for-powerline font-liberation
+brew install font-roboto font-fira-code font-fira-code-nerd-font font-fira-mono-nerd-font font-jetbrains-mono-nerd-font font-noto-nerd-font font-liberation font-liberation-nerd-font
 brew install koekeishiya/formulae/yabai
 
 # Install macos casks

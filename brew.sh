@@ -82,14 +82,13 @@ brew install archey4
 brew install argocd
 brew install bat
 brew install broot
-brew install devdash
 brew install docker
 brew install docker-compose
 brew install eza
 brew install fzf
 brew install gh
 brew install git
-brew install git-flow-avh
+brew install git-flow
 brew install git-lfs
 brew install glab
 brew install gs
@@ -108,6 +107,7 @@ brew install pv
 brew install rename
 brew install rlwrap
 brew install ssh-copy-id
+brew install starship
 brew install terraform
 brew install tmux
 brew install tree

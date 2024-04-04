@@ -176,3 +176,6 @@ alias pdprd="$HOME/git/infrastructure/devops-scripts/bin/connect-to-gke-cluster.
 
 # Shortcuts for the sanitas google secret management scrip
 alias sgsm="$HOME/git/infrastructure/devops-scripts/bin/secret-management.sh"
+
+# Disable Proxy for Bitwarden CLI
+alias bw="ALL_PROXY='' HTTP_PROXY='' http_proxy='' HTTPS_PROXY='' https_proxy='' bw"

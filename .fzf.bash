@@ -25,6 +25,7 @@ if [[ $- == *i* ]]; then
   if [[ ${BLE_VERSION-} ]]; then
     ble-import -d integration/fzf-completion
   else
+		# shellcheck source=/dev/null
     source /opt/homebrew/opt/fzf/shell/completion.bash 2> /dev/null
   fi
 fi
@@ -34,6 +35,7 @@ fi
 if [[ ${BLE_VERSION-} ]]; then
   ble-import -d integration/fzf-key-bindings
 else
+	# shellcheck source=/dev/null
   source /opt/homebrew/opt/fzf/shell/key-bindings.bash
 fi
 

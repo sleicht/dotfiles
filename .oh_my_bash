@@ -12,7 +12,7 @@ export OSH="${HOME}/.oh-my-bash"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
 # shellcheck disable=SC2034
-#OSH_THEME="powerbash10k"
+OSH_THEME="standard"
 
 # Uncomment the following line to use case-sensitive completion.
 # OMB_CASE_SENSITIVE=true
@@ -85,7 +85,6 @@ OMB_USE_SUDO=true
 completions=(
   git
   composer
-  nvm
   ssh
 )
 
@@ -106,7 +105,6 @@ aliases=(
 plugins=(
   git
   bashmarks
-  nvm
   sdkman
   kubectl
   gcloud

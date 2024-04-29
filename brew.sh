@@ -80,7 +80,7 @@ brew tap homebrew/cask-fonts
 brew install ack
 brew install archey4
 brew install argocd
-brew install bat
+brew install bat bat-extras
 brew install broot
 brew install docker
 brew install docker-compose

@@ -5,7 +5,7 @@
 if [[ -n "$PS1" ]] ; then
 	source ~/.bash_profile
 else
-	PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:$PATH
+	PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:$PATH
 	return
 fi
 

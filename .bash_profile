@@ -2,7 +2,8 @@
 export PATH="$HOME/bin:/opt/homebrew/opt/grep/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH";
 
 # Add brew to path
-eval "$(/opt/homebrew/bin/brew shellenv)"
+test -d /opt/homebrew && eval "$(/opt/homebrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Load login settings and environment variables
 if [[ -f ~/.profile ]]; then

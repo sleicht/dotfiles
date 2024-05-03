@@ -10,8 +10,10 @@ _ble_contrib_fzf_base=/opt/homebrew/opt/fzf
 
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == *"/opt/homebrew/opt/fzf/bin"* ]]; then
+if [[ -d /opt/homebrew && ! "$PATH" == *"/opt/homebrew/opt/fzf/bin"* ]]; then
   export PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+elif [[ -d /home/linuxbrew/.linuxbrew && ! "$PATH" == *"/home/linuxbrew/.linuxbrew/opt/fzf/bin"* ]]; then
+  export PATH="${PATH:+${PATH}:}/home/linuxbrew/.linuxbrew/opt/fzf/bin"
 fi
 
 # Auto-completion
@@ -26,7 +28,8 @@ if [[ $- == *i* ]]; then
     ble-import -d integration/fzf-completion
   else
 		# shellcheck source=/dev/null
-    source /opt/homebrew/opt/fzf/shell/completion.bash 2> /dev/null
+		test -d /opt/homebrew && source /opt/homebrew/opt/fzf/shell/completion.bash 2> /dev/null
+		test -d /home/linuxbrew/.linuxbrew && source /home/linuxbrew/.linuxbrew/opt/fzf/shell/completion.bash 2> /dev/null
   fi
 fi
 
@@ -36,7 +39,8 @@ if [[ ${BLE_VERSION-} ]]; then
   ble-import -d integration/fzf-key-bindings
 else
 	# shellcheck source=/dev/null
-  source /opt/homebrew/opt/fzf/shell/key-bindings.bash
+	test -d /opt/homebrew && source /opt/homebrew/opt/fzf/shell/key-bindings.bash
+	test -d /home/linuxbrew/.linuxbrew && source /home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.bash
 fi
 
 if [[ ${BLE_VERSION-} ]]; then

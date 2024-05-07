@@ -96,6 +96,8 @@ completions=(
 aliases=(
   general
   eza
+  docker
+  terraform
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)

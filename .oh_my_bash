@@ -95,6 +95,7 @@ completions=(
 # shellcheck disable=SC2034
 aliases=(
   general
+  eza
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)

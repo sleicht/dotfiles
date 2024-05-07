@@ -90,6 +90,10 @@ alias df="duf"
 # Alias for du alternative dust
 alias du="dust"
 
+# Alias for htop alternative bottom
+alias htop="btm"
+alias top="btm"
+
 # Brew Services
 alias bs="brew services"
 

@@ -82,6 +82,7 @@ brew install archey4
 brew install argocd
 brew install bat bat-extras
 brew install broot
+brew install bottom
 brew install docker
 brew install docker-compose
 brew install duf

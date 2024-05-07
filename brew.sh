@@ -84,6 +84,7 @@ brew install bat bat-extras
 brew install broot
 brew install docker
 brew install docker-compose
+brew install dust
 brew install eza
 brew install fzf
 brew install gh

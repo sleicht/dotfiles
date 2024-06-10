@@ -125,8 +125,6 @@ brew install koekeishiya/formulae/yabai
 brew install --cask affinity-designer affinity-photo affinity-publisher
 brew install --cask arc
 brew install --cask apache-directory-studio
-brew install --cask bartender
-brew install --cask bettertouchtool
 brew install --cask beyond-compare
 brew install --cask bitwarden
 brew install --cask camunda-modeler
@@ -148,11 +146,11 @@ brew install --cask google-drive
 brew install --cask lens
 brew install --cask istat-menus
 brew install --cask jetbrains-toolbox
+brew install --cask jordanbaird-ice
 brew install --cask jprofiler
 brew install --cask karabiner-elements
 brew install --cask kdrive
 brew install --cask keystore-explorer
-brew install --cask kitty
 brew install --cask lens
 brew install --cask logi-options-plus
 brew install --cask logseq

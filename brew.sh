@@ -116,7 +116,6 @@ brew install tmux
 brew install tree
 brew install vale
 brew install vbindiff
-brew install volta
 brew install yarn
 brew install zopfli
 brew install font-roboto font-fira-code font-fira-code-nerd-font font-fira-mono-nerd-font font-jetbrains-mono-nerd-font font-noto-nerd-font font-liberation font-liberation-nerd-font
